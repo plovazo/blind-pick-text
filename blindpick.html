@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown and Random Number</title>
+    <style>
+        .main-body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .input-row {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .input-row label {
+            width: 80px;
+            font-weight: bold;
+        }
+
+        .input-row input {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Body -->
+    <div class="main-body">
+        <h1>Welcome to blind selector</h1>
+        <p>Type your units for your loadout below, then click reveal text</p>
+
+        <!-- Labeled Password-style textboxes -->
+        <div class="input-row">
+            <label for="plantsInput">Plants</label>
+            <input id="plantsInput" type="password" placeholder="Enter plant text">
+        </div>
+
+        <div class="input-row">
+            <label for="zombiesInput">Zombies</label>
+            <input id="zombiesInput" type="password" placeholder="Enter zombie text">
+        </div>
+
+        <!-- Reveal Button -->
+        <button onclick="revealPasswords()" tabindex="-1" onkeydown="event.preventDefault()">Reveal Loadout</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Made by Plovazo</p>
+    </footer>
+
+    <script>
+        function revealPasswords() {
+            const inputs = document.querySelectorAll('input[type="password"]');
+            inputs.forEach(input => {
+                input.type = 'text';
+            });
+        }
+    </script>
+
+</body>
+</html>
