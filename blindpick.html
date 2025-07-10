@@ -51,19 +51,23 @@
     <!-- Main Body -->
     <div class="main-body">
         <h1>Welcome to blind selector</h1>
-        <p>Type your units for your loadout below, then click reveal text</p>
+        <p>To use this blind selector, the host player on Parsec must open this page.</p>
+        <p>Next each player types their units below, then click reveal text button. </p>
+        <p>After clicking button, the text is revealed and editing is disabled. </p>
+        <p>Refresh page to restart. </p>
 
         <!-- Labeled Password-style textboxes -->
+    <form autocomplete="off" onsubmit="return false;">
       <div class="input-row">
           <label for="plantsInput">Plants</label>
-          <input id="plantsInput" type="password" placeholder="Enter plant text" autocomplete="off" name="plant-entry">
+          <input id="plantsInput" type="password" placeholder="peashooter coffeeB puff" autocomplete="off" name="plant-entry">
       </div>
 
       <div class="input-row">
           <label for="zombiesInput">Zombies</label>
-          <input id="zombiesInput" type="password" placeholder="Enter zombie text" autocomplete="off" name="zombie-entry">
+          <input id="zombiesInput" type="password" placeholder="basic screendoor football" autocomplete="off" name="zombie-entry">
       </div>
-
+    </form>
 
         <!-- Reveal Button -->
         <button onclick="revealPasswords()" tabindex="-1" onkeydown="event.preventDefault()">Reveal Loadout</button>
@@ -79,6 +83,7 @@
             const inputs = document.querySelectorAll('input[type="password"]');
             inputs.forEach(input => {
                 input.type = 'text';
+                input.readOnly = true; // Prevent further editing
             });
         }
     </script>
