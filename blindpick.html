@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropdown and Random Number</title>
+    <title></title>
     <style>
         .main-body {
             padding: 20px;
@@ -54,15 +54,16 @@
         <p>Type your units for your loadout below, then click reveal text</p>
 
         <!-- Labeled Password-style textboxes -->
-        <div class="input-row">
-            <label for="plantsInput">Plants</label>
-            <input id="plantsInput" type="password" placeholder="Enter plant text">
-        </div>
+      <div class="input-row">
+          <label for="plantsInput">Plants</label>
+          <input id="plantsInput" type="password" placeholder="Enter plant text" autocomplete="off" name="plant-entry">
+      </div>
 
-        <div class="input-row">
-            <label for="zombiesInput">Zombies</label>
-            <input id="zombiesInput" type="password" placeholder="Enter zombie text">
-        </div>
+      <div class="input-row">
+          <label for="zombiesInput">Zombies</label>
+          <input id="zombiesInput" type="password" placeholder="Enter zombie text" autocomplete="off" name="zombie-entry">
+      </div>
+
 
         <!-- Reveal Button -->
         <button onclick="revealPasswords()" tabindex="-1" onkeydown="event.preventDefault()">Reveal Loadout</button>
