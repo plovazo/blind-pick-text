@@ -31,11 +31,12 @@
             font-weight: bold;
         }
 
-        .input-row input {
+        .input-row input[type="password"],
+        .input-row input[type="text"] {
             padding: 10px;
             font-size: 16px;
             width: 100%;
-            max-width: 300px;
+            max-width: 450px;
         }
 
         button {
@@ -43,6 +44,15 @@
             font-size: 16px;
             margin-top: 10px;
             cursor: pointer;
+        }
+
+        .input-row div {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-row input[type="radio"] {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -57,17 +67,29 @@
         <p>Refresh page to restart. </p>
 
         <!-- Labeled Password-style textboxes -->
-    <form autocomplete="off" onsubmit="return false;">
-      <div class="input-row">
-          <label for="plantsInput">Plants</label>
-          <input id="plantsInput" type="password" placeholder="peashooter coffeeB puff" autocomplete="off" name="plant-entry">
-      </div>
+        <form autocomplete="off" onsubmit="return false;">
+            <!-- Radio Buttons -->
+            <div class="input-row">
+                <label>Host will play as: </label>
+                <div>
+                    <label><input type="radio" name="pzChoice" value="P"> P</label>
+                    <label><input type="radio" name="pzChoice" value="Z"> Z</label>
+                </div>
+            </div>
 
-      <div class="input-row">
-          <label for="zombiesInput">Zombies</label>
-          <input id="zombiesInput" type="password" placeholder="basic screendoor football" autocomplete="off" name="zombie-entry">
-      </div>
-    </form>
+            <div class="input-row">
+                <label for="plantsInput">Plants</label>
+                <input id="plantsInput" type="password" placeholder="puff coffeeB" autocomplete="off" name="plant-entry">
+
+            </div>
+            <div class="input-row">
+                <label for="zombiesInput">Zombies</label>
+                <input id="zombiesInput" type="password" placeholder="basic football" autocomplete="off" name="zombie-entry">
+                
+            </div>
+            <label for="">Check when first player finish typing</label>
+            <input type="checkbox" name="zCheck" style="margin-left: 10px;">
+        </form>
 
         <!-- Reveal Button -->
         <button onclick="revealPasswords()" tabindex="-1" onkeydown="event.preventDefault()">Reveal Loadout</button>
