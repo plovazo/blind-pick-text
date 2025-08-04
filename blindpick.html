@@ -36,7 +36,7 @@
             padding: 10px;
             font-size: 16px;
             width: 100%;
-            max-width: 450px;
+            max-width: 1000px;
         }
 
         button {
@@ -61,8 +61,7 @@
     <!-- Main Body -->
     <div class="main-body">
         <!--<h1>Welcome to blind selector</h1> -->
-        <p>Both players can pick their units without knowing opponent's units with this blind selector. </p>
-        <p>To use this blind selector, the host player on Parsec must open this page. Next each player types their units below, then click reveal text button. After clicking button, the text is revealed and editing is disabled. Refresh page to restart. </p>
+        <p>Both players can pick their units without knowing opponent's units with this blind selector. To use this blind selector, the host player on Parsec must open this page. Next each player types their units below, then click reveal text button. After clicking button, the text is revealed and editing is disabled. Refresh page to restart. </p>
         <p></p>
 
         <!-- Labeled Password-style textboxes -->
@@ -76,16 +75,19 @@
                 </div>
             </div>
 
-            <div class="input-row">
-                <label for="plantsInput">Plants</label>
-                <input id="plantsInput" type="password" placeholder="puff coffeeB" autocomplete="off" name="plant-entry">
+<!-- Add this inside your <body> where the input fields are -->
+  <div class="input-row">
+      <label for="plantsInput">Plants</label>
+      <input id="plantsInput" type="password" placeholder="puff coffeeB" autocomplete="off" name="plant-entry" oninput="updateCounts('plantsInput', 'plantsCount')">
+  </div>
+  <div id="plantsCount" style="margin-left: 80px; color: gray;"></div>
 
-            </div>
-            <div class="input-row">
-                <label for="zombiesInput">Zombies</label>
-                <input id="zombiesInput" type="password" placeholder="basic football" autocomplete="off" name="zombie-entry">
-                
-            </div>
+  <div class="input-row">
+      <label for="zombiesInput">Zombies</label>
+      <input id="zombiesInput" type="password" placeholder="basic football" autocomplete="off" name="zombie-entry" oninput="updateCounts('zombiesInput', 'zombiesCount')">
+  </div>
+  <div id="zombiesCount" style="margin-left: 80px; color: gray;"></div>
+
             <label for="">Check when first player finish typing (click or tab space)</label>
             <input type="checkbox" name="zCheck" style="margin-left: 10px;">
         </form>
@@ -108,6 +110,29 @@
             });
         }
     </script>
+<script>
+    function updateCounts(inputId, countId) {
+        const input = document.getElementById(inputId);
+        const countDiv = document.getElementById(countId);
+        const text = input.value;
+        const spaceCount = (text.match(/ /g) || []).length;
+        const commaCount = (text.match(/,/g) || []).length;
+
+        countDiv.textContent = `Spaces: ${spaceCount}, Commas: ${commaCount}`;
+    }
+
+    function revealPasswords() {
+        const inputs = document.querySelectorAll('input[type="password"]');
+        inputs.forEach(input => {
+            input.type = 'text';
+            input.readOnly = true;
+        });
+
+        // Optionally freeze the count too
+        updateCounts('plantsInput', 'plantsCount');
+        updateCounts('zombiesInput', 'zombiesCount');
+    }
+</script>
 
 </body>
 </html>
